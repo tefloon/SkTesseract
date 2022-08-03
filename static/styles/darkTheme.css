@@ -1,0 +1,38 @@
+:root{
+
+    /* ===== Backgrounds ===== */
+    --background-main: #2E3440;
+    --background-main-hover: #2e5972;
+    --background-main-disabled: #797979;
+
+
+    --background-accent: #1F2633;
+    --background-accent-hover: #0b2350;
+    --background-accent-disabled: #797979;
+    
+    /* ======== Text ========= */
+    --text-main: #DDDDDD;
+    --text-hover: #DDDDDD;
+    --text-main-disabled: #a7a7a7;
+    
+    --text-accent: #CCAC42;
+    --text-accent-hover: #CCAC42;
+    --text-accent-disabled: #746b50;
+
+
+    /* ======= Buttons ======= */
+    --button-main-text: #FFFFFF;
+    --button-accent-text: #303030;
+
+    --button-main-bg: #2a72d9;
+    --button-accent-bg: #FF0051;
+
+    /* ======= Tables ======== */
+    --table-header-bg: #00b1bb;
+    --table-header-text: #FFFFFF;
+    
+    --table-row-odd-bg: #313744;
+    --table-row-even-bg: #353C49;
+    --table-row-hover-bg: #495265;
+
+}

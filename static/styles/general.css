@@ -1,0 +1,18 @@
+:root{
+    --table-border-radius: 3px;
+}
+
+.disable-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body{
+    background-color: var(--background-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    padding: 15px 0;
+    /* overflow: hidden; */
+}
