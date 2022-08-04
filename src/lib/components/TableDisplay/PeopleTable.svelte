@@ -6,19 +6,15 @@
 //       Imports
 // =====================
     // Components
-    import Tags from "../shared/Tags.svelte";
-    import ButtonRainbow from "../shared/ButtonRainbow.svelte";
+    import Tags from "@components/shared/Tags.svelte";
+    import ButtonRainbow from "@components/shared/ButtonRainbow.svelte";
 
-    import PeopleDetails from "../DetailsDisplay/PeopleDetails.svelte";
-    import PeopleRowGrid from "./PeopleRow.svelte";
-    import PeopleTableNav from "./PeopleTableNav.svelte";
+    import PeopleDetails from "@components/DetailsDisplay/PeopleDetails.svelte";
+    import PeopleRowGrid from "@components/TableDisplay/PeopleRow.svelte";
+    import PeopleTableNav from "@components/TableDisplay/PeopleTableNav.svelte";
 
     // Functions
-    import {
-        capitalize,
-        cssVariables,
-        changeCssVariable,
-    } from "../../scripts/MyUtilityFunctions";
+    import { capitalize } from "../../scripts/MyUtilityFunctions";
 
 //         Props
 // =====================
@@ -61,8 +57,6 @@
 //   Dividing into columns
 // ========================
     const numberOfColumns = Object.keys(displayOptions).length + 1;
-    changeCssVariable("num-of-col", numberOfColumns);
-    changeCssVariable("num-of-eq-col", numberOfColumns - 1);
 
 //        Variables
 // ========================
@@ -144,34 +138,9 @@
     let selected = 0;
     let lastSelected = -1;
 
-    const showDetails = (person) => {    
-        console.log(`Ostatni: ${lastSelected} \t Obecny: ${person.id}`)
-        
-        if (person.id == lastSelected) {
-            detailsVisible = false;
-            lastSelected = -1;
-            return;
-        }  
-        
-        detailsVisible = true;
-        selected = person;
-        lastSelected = selected.id;
-    }
-
-    const handleMouseMove = (event) => {
-        left = `${event.clientX + 20}px`;
-        top  = `${event.clientY + 20}px`;
-    };
 </script>
 
-<svelte:head>
-	<link 								rel='stylesheet' type ="text/css" href='./styles/reset.css'>
-	<link 								rel='stylesheet' type ="text/css" href='./styles/general.css'>
-	<link id="pagestyle" 	rel="stylesheet" type ="text/css" href="./styles/darkTheme.css">    
-    <title>Tesseract - PeopleTable</title>
-</svelte:head>
-
-<div class="container" on:mousemove={handleMouseMove}>
+<div class="container">
 
     <!--  If the dataset _IS_ empty  -->
     {#if items.length < 1}
@@ -188,10 +157,10 @@
 
         <div class="table">
             <!-- We first display the header with labels -->
-            <div id={`headerRow`} class="row header">
-                <div class="header">L.p.</div>
+            <div id={`headerRow`} class="row accent tableHeader">
+                <div class="item">L.p.</div>
                 {#each Object.values(displayOptions) as label}
-                    <div class="header">{capitalize(label)}</div>
+                    <div class="item">{ capitalize(label) }</div>
                 {/each}
             </div> <!-- end of HEADER -->
 
@@ -203,18 +172,18 @@
                     on:click={() => handleRowClick(person)}
                 >
                     <PeopleRowGrid
-                        {person}
+                        { person }
+                        { displayOptions }
                         i={i + currentPage * maxItems}
-                        {displayOptions}
                         on:click={() => handleRowClick(person)}
                     />
                 </div> <!-- end of ITEMS -->
             {/each}
 
             <!-- Lastly we display a footer just for estetic reasons -->
-            <div class="tableFooter">
+            <div class="row accent tableFooter">
                 {#each Array(numberOfColumns) as _, i (i)}
-                    <div id={`footerRow_${i}`} class="footerItem" />
+                    <div id={`footerRow_${i}`} class="footerItem item"></div>
                 {/each}
             </div> <!-- end of FOOTER -->
 
@@ -233,60 +202,25 @@
 
 </div> <!-- end of CONTAINER -->
 
-<!-- Rainbow Buttons -->
-<div class="tableTopNav">
-    <ButtonRainbow on:click={resetList}>
-        Reset List
-    </ButtonRainbow>
-    <ButtonRainbow on:mousedown={deleteAll}>
-        Delete All
-    </ButtonRainbow>
-</div>
-
-<!-- Modal Window with Details -->
-{#if detailsVisible == true}
-    <div class="modal" use:cssVariables={{ left, top }}>
-        <PeopleDetails person={selected} />
-    </div>
-{/if}
-
-
 <style>
 /* ===== General ======= */
-    :root {
-        --left: 0;
-        --top: 0;
-        --num-of-col: 6;
-        --num-of-eq-col: calc(var(--num-of-col) - 1);
-    }
-
     .container {
-        color: #ccc;
         display: flex;
+        padding: 2rem 2rem;
         flex-direction: column;
-        padding: 1rem 2rem;
-        width: 900px; 
+        color: #ccc;
+        width: 100%;
+        max-width: 1000px;
     }
-
-    @media screen and (max-width: 950px){
-        .container{
-            width: initial;
-        }
-    }
-
+    
 /* ===== Table Body ====== */
     .table {
-        shape-outside: circle();
-        flex-shrink: 1;
-        display: grid;
-        grid-template-columns: 0.15fr repeat(var(--num-of-eq-col), 1fr);
+        display: table;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     }
-
+    
     .row {
-        display: grid;
-        grid-column: span var(--num-of-col);
-        grid-template-columns: subgrid;
+        display: table-row;
         cursor: pointer;
     }
     
@@ -302,30 +236,23 @@
         background-color: var(--table-row-hover-bg);
     }
 
-    .row.header{
+    .row.accent{
         background-color: var(--table-header-bg);
-        border-top-right-radius:var(--table-border-radius);
-        border-top-left-radius: var(--table-border-radius);
-
+        color: var(--table-header-text);
         font-weight: 900;
         text-align: center;
-        color: var(--table-header-text);
-        padding: 0.2rem 0.5rem;
     }
 
+    .tableHeader .item{
+        padding: 0.5rem 1rem;
+    }
+    
     .tableFooter {
-        height: 10px;
-        grid-column: span var(--num-of-col);
-        background-color: var(--table-header-bg);
-        border-bottom-right-radius: var(--table-border-radius);
-        border-bottom-left-radius: var(--table-border-radius);
+        height: 0.5rem;
     }
 
-/* ===== Table Top Nav ===== */
-    .tableTopNav {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+    .item{
+        display: table-cell;
     }
 
 /* ===== No Content ====== */
@@ -346,11 +273,4 @@
         font-size: 3rem;
     }
 
-/* ===== Details ====== */
-    .modal {
-        position: absolute;
-        top: var(--top);
-        left: var(--left);
-        z-index: 20;
-    }
 </style>

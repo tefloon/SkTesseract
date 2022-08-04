@@ -134,7 +134,7 @@
    .tableNavContainer{
       display: grid;
       grid-template-columns: min-content auto min-content;
-      margin: 10px 0;
+      margin: 12px 0;
    }
 
    .tableNavPagesContainer_all {
@@ -142,7 +142,6 @@
       grid-auto-rows: 1.6rem;
       grid-template-columns: repeat(auto-fill, minmax(2rem, 1fr));
       gap: .2rem;
-
    }
 
    .tableNavPagesContainer_collapse {
@@ -158,6 +157,7 @@
       color: var(--table-header-text);
       cursor: pointer;
       padding: 0 5px;
+      min-width: 1.75rem;
    }
 
    .tableNavBtn:hover{

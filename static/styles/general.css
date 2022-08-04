@@ -16,3 +16,7 @@ body{
     padding: 15px 0;
     /* overflow: hidden; */
 }
+
+a:visited{
+    color: var(--text-main);
+}

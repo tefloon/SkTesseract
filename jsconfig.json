@@ -1,0 +1,44 @@
+{
+  "extends": "./.svelte-kit/tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      // "$lib": [
+      //   "src/lib"
+      // ],
+      // "$lib/*": [
+      //   "src/lib/*"
+      // ],
+      "@lib": [
+        "src/lib"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@components": [
+        "src/lib/components"
+      ],
+      "@components/*": [
+        "src/lib/components/*"
+      ],
+      "@scripts": [
+        "src/lib/scripts"
+      ],
+      "@scripts/*": [
+        "src/lib/scripts/*"
+      ],
+      "@stores": [
+        "src/lib/stores"
+      ],
+      "@stores/*": [
+        "src/lib/stores/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.js",
+    "src/**/*.svelte"
+  ]
+}
