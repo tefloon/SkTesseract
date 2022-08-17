@@ -3,7 +3,7 @@
 </script>
 
 
-<span class="tag disable-select" class:disabled={ tag.state === 'active' ? false : true}>
+<span class="tag" class:disabled={ tag.state === 'active' ? false : true}>
     <span class="tagType">{ tag.type }: </span>
     <span class="tagValue">{ tag.value }</span>
 </span>

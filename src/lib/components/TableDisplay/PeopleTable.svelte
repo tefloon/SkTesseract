@@ -18,8 +18,8 @@
 
 //         Props
 // =====================
-    export let dataset; // Dataset to display - writable store
-    export let maxItems = 50; // Maximum number of items on a page
+    export let dataset;         // Dataset to display - writable store
+    export let maxItems = 50;   // Maximum number of items on a page
     export let displayOptions = {
         // id: "Id",
         name: "Imię",
@@ -50,8 +50,8 @@
     // e.g if we are on page 5 and there are 10 records per page
     //     we want to show records 41-50 (inclusive)
     $: currentGroup = items.slice(
-        maxItems * currentPage,
-        maxItems * (currentPage + 1)
+            maxItems * currentPage,
+            maxItems * (currentPage + 1)
         );
         
 //   Dividing into columns
@@ -69,14 +69,14 @@
 //         Events
 // =====================
 
-    // On clicked event we receive which row (person) has been clicked
+    // On a clicked event we receive which row (person) has been clicked
     // So we can do update it as needed it
     
     const handleRowClick = (person) => {
         showDetails(person);        
     };
     
-    // Delete a row (perrson)
+    // Delete a row (perrson) 
     const deletePerson = (person) => {
         items = items.filter( i => i != person);
     }
@@ -114,10 +114,10 @@
 //        Filters
 // =====================
     let filters = [
-        // { id: 1, type: "Lokalizacja", value: "Ursynów", state: "active" },
-        // { id: 2, type: "Finanse", value: "brak zaległości", state: "active" },
-        // { id: 3, type: "Wiek", value: "8-10 lat", state: "active" },
-        // { id: 4, type: "Przedmiot", value: "Programowanie", state: "active" },
+        { id: 1, type: "Lokalizacja", value: "Ursynów", state: "active" },
+        { id: 2, type: "Finanse", value: "brak zaległości", state: "active" },
+        { id: 3, type: "Wiek", value: "8-10 lat", state: "active" },
+        { id: 4, type: "Przedmiot", value: "Programowanie", state: "active" },
     ];
 
 //        Details
@@ -209,8 +209,10 @@
         padding: 2rem 2rem;
         flex-direction: column;
         color: #ccc;
-        width: 100%;
-        max-width: 1000px;
+        /* width: 100%;
+        max-width: 1000px; */
+        width: min(100%, 1000px);
+        font-size: 1rem;
     }
     
 /* ===== Table Body ====== */

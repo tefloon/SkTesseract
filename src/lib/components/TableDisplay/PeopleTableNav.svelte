@@ -130,24 +130,24 @@
 {/if} <!-- end of PAGES EXIST if -->
 
 <style>
-
    .tableNavContainer{
       display: grid;
       grid-template-columns: min-content auto min-content;
-      margin: 12px 0;
+      margin: .6em 0;
    }
 
    .tableNavPagesContainer_all {
       display: grid;
-      grid-auto-rows: 1.6rem;
-      grid-template-columns: repeat(auto-fill, minmax(2rem, 1fr));
-      gap: .2rem;
+      grid-auto-rows: 2em;
+      grid-template-columns: repeat(auto-fill, minmax(2em, 1fr));
+      gap: .2em;
    }
 
    .tableNavPagesContainer_collapse {
       display: flex;
       justify-content: center;
-      gap: .2rem;
+      align-items: center;
+      gap: .2em;
    }
 
    .tableNavBtn{
@@ -156,8 +156,13 @@
       border-radius: 3px;
       color: var(--table-header-text);
       cursor: pointer;
-      padding: 0 5px;
-      min-width: 1.75rem;
+      padding: .2em .2em;
+      min-width: 2em;
+   }
+
+   .tableNavPagesContainer_all .tableNavBtn{
+      /* align-items: center; */
+      align-self: center;
    }
 
    .tableNavBtn:hover{
@@ -166,14 +171,14 @@
 
    .arrows{
       display: flex;
-      width: 3rem;
+      width: 3em;
       justify-content: center;
       align-items: center;
    }
    
    .arrows .tableNavBtn{
-      padding: 0.1rem 0.5rem;
-      padding-bottom: 0.2rem;
+      padding: 0.1em 0.5em;
+      padding-bottom: 0.3em;
    }
 
    .current {

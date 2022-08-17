@@ -42,6 +42,7 @@
     }
       
     .itemText{
+        /* border: 1px solid red; */
         font-size: inherit;  /* Not to have empty selectors */
     }
  
