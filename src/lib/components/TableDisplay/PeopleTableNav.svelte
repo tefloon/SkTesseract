@@ -65,7 +65,7 @@
                {"<<"}
             </button>
          {/if}
-      </div>
+      </div> <!-- end of TOP ARROWS if -->
 
       <div class="tableNavPagesContainer" class:tableNavPagesContainer_all={ !collapse } class:tableNavPagesContainer_collapse={ collapse }>
          <!-- if we DON'T COLLAPSE, show all -->
@@ -74,8 +74,8 @@
                   <button class="tableNavBtn" class:current={ currentPage == i } on:click={ () => handleNavLinkClick(i) } >
                      {i + 1}
                   </button>
-            {/each}
-
+            {/each}       
+         
          <!-- if DO COLLAPSE show parts -->
          {:else}
 
@@ -124,7 +124,7 @@
                {">>"}
             </button>
          {/if}
-      </div>
+      </div> <!-- end of BOTTOM ARROWS if -->
 
    </div> <!-- end of tableNavContainer -->
 {/if} <!-- end of PAGES EXIST if -->
@@ -153,7 +153,7 @@
    .tableNavBtn{
       background-color: rgba(0,0,0,.5);
       border: 1px solid rgb(82, 82, 82);
-      border-radius: 3px;
+      border-radius: 5px;
       color: var(--table-header-text);
       cursor: pointer;
       padding: .2em .2em;

@@ -9,6 +9,7 @@
     let ids = []
     
     let dataToShow = Object.values(pick(person, Object.keys(displayOptions)));
+
     dataToShow = [i+1, ...dataToShow]
 
     for (let i = 0; i < dataToShow.length; i++) {
@@ -19,13 +20,11 @@
 
 <!-- TODO: Add an edit icon next to each item -->
 {#if person}
-        {#each dataToShow as dataItem, a (ids[a]) }
-            <div class="item" class:numbering={ a == 0 }>
-                <span class="itemText">
-                    { dataItem }
-                </span>
-            </div>
-        {/each}
+    {#each dataToShow as dataItem, a (ids[a]) }
+        <div class="item" class:center={ a == 0 || dataItem == 'F' || dataItem == 'M' } >
+            { dataItem }
+        </div>
+    {/each}
 {/if}
 
 <style>
@@ -47,7 +46,7 @@
         font-size: inherit;  /* Not to have empty selectors */
     }
  
-    .item.numbering{
+    .item.center{
         width: 2rem;
         text-align: center;     
     }

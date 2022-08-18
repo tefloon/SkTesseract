@@ -7,7 +7,7 @@
 // =====================
 	// Components
 	import Tags from '$components/shared/Tags.svelte';
-	import ModifierKeys from '$components/Helpers/ModifierKeys.svelte';
+	import ModifierKeys from '$components/LogicComponents/ModifierKeys.svelte';
 	import PeopleDetails from '$components/DetailsDisplay/PeopleDetails.svelte';
 	import PeopleRow from '$components/TableDisplay/PeopleRow.svelte';
 	import PeopleTableNav from '$components/TableDisplay/PeopleTableNav.svelte';
@@ -112,12 +112,13 @@
 			toggleSelection(person.id);
 			startRange = person.id
 		}
-		updateCity(person)
+		deletePerson(person);
 	};
 
 	// Delete a row (perrson)
 	const deletePerson = (person) => {
 		items = items.filter((i) => i != person);
+		currentGroup =items.slice(maxItems * currentPage, maxItems * (currentPage + 1));
 	};
 
 	const deleteAll = () => {
@@ -177,12 +178,7 @@
 	let lastSelected = -1;
 </script>
 
-<ModifierKeys bind:modKeys />
-
-<!-- {#each modKeys as mod}
-	<div class="mod">{ mod }</div>
-{/each} -->
-
+<ModifierKeys bind:modKeys showModal={false} />
 
 <div class="container noselect">
 
@@ -200,7 +196,9 @@
 			<PeopleTableNav {numberOfPages} {currentPage} on:navlicked={handleNavLinkClick} />
 		{/if}
 
+		<!-- Table with records -->
 		<div class="table">
+
 			<!-- We first display the header with labels -->
 			<div id={`headerRow`} class="row accent tableHeader">
 				<div class="item">L.p.</div>
@@ -225,6 +223,7 @@
 				</div>
 				<!-- end of ITEMS -->
 			{/each}
+			<!-- end of ITEMS -->
 
 			<!-- Lastly we display a footer just for estetic reasons -->
 			<div class="row accent tableFooter">
@@ -250,20 +249,12 @@
 
 <!-- end of CONTAINER -->
 <style>
-	.mod {
-		color: white;
-		font-size: 24px;
-		font-family: 'arima';
-	}
-
 /* ===== General ======= */
 	.container {
 		display: flex;
 		padding: 2rem 2rem;
 		flex-direction: column;
 		color: #ccc;
-		/* width: 100%;
-        max-width: 1000px; */
 		width: min(100%, 1000px);
 		font-size: 1rem;
 	}
