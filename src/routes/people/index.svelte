@@ -19,6 +19,10 @@
 	}
 </script>
 
+<svelte:head>
+	<link rel="stylesheet" href="/styles/reset.css" />
+</svelte:head>
+
 <main>
 		<PeopleTable {...options} /> 
 </main>
@@ -30,10 +34,9 @@
 		justify-content: flex-start;
 		align-items: center;
 		flex-direction: column;
-		width: 100%;
-		height: 100%;
-		
-		background-color: var(--background-main);
+		/* width: 100%;
+		height: 100%; */
+		/* background-color: var(--background-main); */
 	}
 
 </style>
