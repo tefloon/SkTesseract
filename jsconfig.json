@@ -4,36 +4,33 @@
     "module": "esnext",
     "baseUrl": ".",
     "paths": {
+      "$lib/*": [
+        "src/lib/*"
+      ],
+      "$components/*": [
+        "src/lib/components/*"
+      ],
+      "$scripts/*": [
+        "src/lib/scripts/*"
+      ],
+      "$stores/*": [
+        "src/lib/stores/*"
+      ],
+      "$shared/*": [
+        "src/lib/components/shared/*"
+      ],      
       // "$lib": [
       //   "src/lib"
       // ],
-      // "$lib/*": [
-      //   "src/lib/*"
+      // "$components": [
+      //   "src/lib/components"
       // ],
-      "@lib": [
-        "src/lib"
-      ],
-      "@lib/*": [
-        "src/lib/*"
-      ],
-      "@components": [
-        "src/lib/components"
-      ],
-      "@components/*": [
-        "src/lib/components/*"
-      ],
-      "@scripts": [
-        "src/lib/scripts"
-      ],
-      "@scripts/*": [
-        "src/lib/scripts/*"
-      ],
-      "@stores": [
-        "src/lib/stores"
-      ],
-      "@stores/*": [
-        "src/lib/stores/*"
-      ]
+      // "$scripts": [
+      //   "src/lib/scripts"
+      // ],
+      // "$stores": [
+      //   "src/lib/stores"
+      // ],
     }
   },
   "include": [

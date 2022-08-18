@@ -8,6 +8,13 @@ const config = {
 		adapter: adapter({
 			fallback: 'index.html'
 		}),
+		alias: {
+			"$lib": "src/lib",
+			"$components": "src/lib/components",
+			"$scripts": "src/lib/scripts",
+			"$stores": "src/lib/stores",
+			"$shared": "src/lib/components/shared",
+		}
 	},
 };
 

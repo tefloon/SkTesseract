@@ -1,8 +1,8 @@
 <script>
-	// import PeopleTable from "@components/TableDisplay/PeopleTable"
-  import PeopleTable from "@components/TableDisplay/PeopleTable.svelte"
-  import people from "@stores/PeopleStore";
-	import Tags from "@components/shared/Tags.svelte"
+	// import PeopleTable from "$components/TableDisplay/PeopleTable"
+  import PeopleTable from "$components/TableDisplay/PeopleTable.svelte"
+  import people from "$stores/PeopleStore";
+	import Tags from "$components/shared/Tags.svelte"
   // import PeopleRow from "$app/components/TableDisplay/PeopleRow.svelte";
 
 	const options = {
@@ -12,7 +12,7 @@
 			// hash: "Id",
 			name: "Imię",
 			surname: "Nazwisko",
-			// gender: "Płeć",
+			gender: "Płeć",
 			address: "Adres",
 			city: "Miasto"
 		}

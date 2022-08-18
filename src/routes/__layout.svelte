@@ -1,5 +1,5 @@
 <script>
-  import NavigationTop from "@components/Layout/NavigationTop.svelte";
+  import NavigationTop from "$components/Layout/NavigationTop.svelte";
 </script>
 
 <svelte:head>

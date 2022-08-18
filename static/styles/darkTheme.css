@@ -19,7 +19,6 @@
     --text-accent-hover: #CCAC42;
     --text-accent-disabled: #746b50;
 
-
     /* ======= Buttons ======= */
     --button-main-text: #FFFFFF;
     --button-accent-text: #303030;
@@ -34,5 +33,8 @@
     --table-row-odd-bg: #313744;
     --table-row-even-bg: #353C49;
     --table-row-hover-bg: #495265;
+
+    --table-row-selected-bg: #02565a;
+    --table-row-selected-hover-bg: #157c81;
 
 }
